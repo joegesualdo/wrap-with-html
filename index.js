@@ -1,12 +1,33 @@
+var wrapString = require("wrap-string");
+
 function wrapWithHTML(opts) {
-  var string = opts.string;
-  var tagName = opts.tagName || "div";
-  var customId = opts.customId || "";
-  var customClass = opts.customClass || "";
+  // Argument error checking.
+  if (!opts || !opts.string) {
+    throw new Error(
+      "Must provide an argument object with the following keys: 'string'"
+    );
+  }
 
-  var htmlString = "<" + tagName + " id='" + customId + "' class='" + customClass + "'>" + string + "</" + tagName + ">";
+  // Set defaults.
+  var DEFAULT_ID = "";
+  var DEFAULT_TAG_NAME = "div";
+  var DEFAULT_CLASS_NAME = "";
 
-  return htmlString;
+  // Set variables.
+  var originalString = opts.string;
+  var tagName = opts.tagName || DEFAULT_TAG_NAME;
+  var customId = opts.customId || DEFAULT_ID;
+  var customClass = opts.customClass || DEFAULT_CLASS_NAME;
+
+  // Create html strings.
+  var openingHTML = "<" + tagName + " id='" + customId + "' class='" + customClass + "'>"
+  var closingHTML = "</" + tagName + ">"
+
+  return wrapString({
+    string: originalString,
+    prepend: openingHTML,
+    append: closingHTML
+  });
 }
 
 module.exports = wrapWithHTML;

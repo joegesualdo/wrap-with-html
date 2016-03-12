@@ -1,11 +1,17 @@
 {
   "name": "wrap-with-html",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Wrap strings with html.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test.js"
   },
   "author": "Joe Gesualdo",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "wrap-string": "0.0.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0"
+  }
 }

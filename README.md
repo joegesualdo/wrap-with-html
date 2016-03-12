@@ -18,3 +18,8 @@ wrapWithHTML({
 })
 //=> <span id='hello-world' class='underline'>Hello World</span>
 ```
+
+## Test
+```
+$ npm test
+```
